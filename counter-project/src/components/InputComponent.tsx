@@ -1,4 +1,4 @@
-import React, {ChangeEvent, useState} from 'react';
+import React, {ChangeEvent} from 'react';
 import styled from "styled-components";
 import {SpanComponent} from "./SpanComponent";
 
@@ -16,8 +16,8 @@ type InputComponentType = {
 export const InputComponent = (props: InputComponentType) => {
 
 const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
-    props.callBack (parseInt(e.currentTarget.value, 10));
-    console.log(typeof e.currentTarget.value)}
+    props.callBack(parseInt(e.currentTarget.value, 10));
+}
 
     return (
         <div>
@@ -36,4 +36,3 @@ const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
     text-align: center;    
     
 `
-

@@ -1,57 +1,56 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {InputComponent} from "./InputComponent";
 import Button from "./Button";
 import {Wrapper} from "./Wrapper";
 import {SectionWrapper} from "./SectionWrapper";
-import  {UpperWrapperStyled} from "./UpperWrapper";
-
-type SettingComponentPropsType = {
-    setMaxValueCallback: (value: number) => void
-    setStartValueCallback: (value: number) => void
-    maxValue: number
-    startValue: number
-}
+import {UpperWrapperStyled} from "./UpperWrapper";
 
 
-export const SettingComponent = (props: SettingComponentPropsType) => {
+export const SettingComponent = () => {
 
-    const [maxValue, setMaxValue] = useState<number>(props.maxValue);
-    const [startValue, setStartValue] = useState<number>(props.startValue);
+    const [maxValue, setMaxValue] = useState<number>(0);
+    const [startValue, setStartValue] = useState<number>(0);
 
+    useEffect(() => {
+        getLocalStorage()
+    }, [])
 
-
-    const toSetMaxValueFunction = (value: number) => {
+    const setMaxValueFunction = (value: number) => {
         setMaxValue(value);
     }
     const setStartValueFunction = (value: number) => {
         setStartValue(value);
     }
-    const setValues = (maxValue: number, startValue: number) => {
-        props.setMaxValueCallback(maxValue)
-        props.setStartValueCallback(startValue)
-    }
 
-
-
-    const setValuesFunction = () => {
-        setValues(maxValue, startValue)
+    const setToLocalStorage = () => {
+        localStorage.setItem('maxValue', JSON.stringify(maxValue));
+        localStorage.setItem('startValue', JSON.stringify(startValue));
 
     }
-
+    const getLocalStorage = () => {
+        let maxValueToString = localStorage.getItem('maxValue');
+        let startValueToString = localStorage.getItem('startValue');
+        if (maxValueToString) {
+            setMaxValue(JSON.parse(maxValueToString))
+        }
+        if (startValueToString) {
+            setStartValue(JSON.parse(startValueToString))
+        }
+    }
 
 
     return (
 
-            <SectionWrapper>
-                <UpperWrapperStyled >
-                    <InputComponent fieldName={'maxValue'} callBack={toSetMaxValueFunction}  value={maxValue}  />
-                    <InputComponent fieldName={'startValue'} callBack={setStartValueFunction} value={startValue} />
-                </UpperWrapperStyled>
-                <Wrapper  justify={'center'}>
-                    <Button buttonFunction={'SET'}
-                            callback={setValuesFunction} ></Button >
-                </Wrapper>
-            </SectionWrapper>
+        <SectionWrapper>
+            <UpperWrapperStyled>
+                <InputComponent fieldName={'maxValue'} callBack={setMaxValueFunction} value={maxValue}/>
+                <InputComponent fieldName={'startValue'} callBack={setStartValueFunction} value={startValue}/>
+            </UpperWrapperStyled>
+            <Wrapper justify={'center'}>
+                <Button buttonFunction={'SET'}
+                        callback={setToLocalStorage}></Button>
+            </Wrapper>
+        </SectionWrapper>
 
 
     );
