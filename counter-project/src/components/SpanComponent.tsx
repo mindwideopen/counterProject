@@ -13,7 +13,6 @@ export const SpanComponent = (props: SpanComponentProps) => {
     );
 };
 
-export default SpanComponent;
 
 const SpanStyled = styled.span`
     margin-right: 10px;

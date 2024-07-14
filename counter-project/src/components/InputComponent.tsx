@@ -1,32 +1,39 @@
-import React from 'react';
+import React, {ChangeEvent, useState} from 'react';
 import styled from "styled-components";
-import SpanComponent from "./SpanComponent";
+import {SpanComponent} from "./SpanComponent";
 
 
 
 
 type InputComponentType = {
-    fieldName: string
+    fieldName: string,
+    callBack: (value: number) => void,
+    value: number,
+
+
 }
 
-const InputComponent = (props: InputComponentType) => {
+export const InputComponent = (props: InputComponentType) => {
+
+const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
+    props.callBack (parseInt(e.currentTarget.value, 10));
+    console.log(typeof e.currentTarget.value)}
+
     return (
         <div>
             <SpanComponent fieldName={props.fieldName}/>
-            <InputStyled></InputStyled>
+            <InputStyled  value={props.value} type={'number'}  onChange={onChangeHandler}></InputStyled>
         </div>
     );
 };
 
-export default InputComponent;
 
 
-const InputStyled = styled.input`
+
+  const InputStyled = styled.input`
     max-width: 150px;
     outline: none;
-    text-align: center;
-    
-    
+    text-align: center;    
     
 `
 

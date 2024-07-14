@@ -3,12 +3,16 @@ import styled from "styled-components";
 
 
 type ButtonPropsType = {
-    buttonFunction: string
+    buttonFunction: string,
+    callback: () => void,
 }
 
 const Button = (props: ButtonPropsType) => {
+    const callbackSet = () => {
+        props.callback();
+    }
     return (
-        <ButtonStyled>
+        <ButtonStyled onClick={callbackSet}>
             {props.buttonFunction}
         </ButtonStyled>
     );

@@ -1,27 +1,33 @@
 import React from 'react';
 import styled from "styled-components";
-import SpanComponent from "./SpanComponent";
+import {SpanComponent} from "./SpanComponent";
 import {Wrapper} from "./Wrapper";
 import Button from "./Button";
 import {SectionWrapper} from "./SectionWrapper";
 import {UpperWrapperStyled} from "./UpperWrapper";
 
-const DisplayComponent = () => {
-    return (
-        <SectionWrapper>
+export const DisplayComponent = () => {
+    // const increment = (value: number) => {
+    //     value = value + 1;
+    //     return value;
+    }
 
-                <UpperWrapperStyled>
-                    <SpanComponent fieldName={'value'}/>
-                </UpperWrapperStyled>
-                <Wrapper justify={'space-around'}>
-                    <Button buttonFunction={'INC'}></Button>
-                    <Button buttonFunction={'RESET'}></Button>
-                </Wrapper>
+//
+//     return (
+//         <SectionWrapper>
+//
+//                 <UpperWrapperStyled>
+//                     <SpanComponent fieldName={'value'}/>
+//                 </UpperWrapperStyled>
+//                 <Wrapper justify={'space-around'}>
+//                     <Button buttonFunction={'INC'}></Button>
+//                     <Button buttonFunction={'RESET'}></Button>
+//                 </Wrapper>
+//
+//
+//         </SectionWrapper>
+//     );
+// };
 
 
-        </SectionWrapper>
-    );
-};
-
-export default DisplayComponent;
 
