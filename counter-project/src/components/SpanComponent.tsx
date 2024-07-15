@@ -2,13 +2,15 @@ import React from 'react';
 import styled from "styled-components";
 
 type SpanComponentProps = {
-    fieldName: string;
+    fieldName?: string;
+    displayValue?: number;
 }
 
 export const SpanComponent = (props: SpanComponentProps) => {
+
     return (
         <SpanStyled>
-            {props.fieldName}
+            {props.fieldName? props.fieldName: props.displayValue}
         </SpanStyled>
     );
 };
@@ -16,5 +18,6 @@ export const SpanComponent = (props: SpanComponentProps) => {
 
 const SpanStyled = styled.span`
     margin-right: 10px;
+   
     
 `

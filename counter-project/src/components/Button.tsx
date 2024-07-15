@@ -3,24 +3,28 @@ import styled from "styled-components";
 
 
 type ButtonPropsType = {
+    children?: React.ReactNode;     //---------------------------??????????-------------------------------
     buttonFunction: string,
     callback: () => void,
+
 }
 
-const Button = (props: ButtonPropsType) => {
-    const callbackSet = () => {
+export const Button = (props: ButtonPropsType) => {
+    const onClickHandler = () => {
         props.callback();
     }
     return (
-        <ButtonStyled onClick={callbackSet}>
+
+        <ButtonStyled onClick={onClickHandler}>
             {props.buttonFunction}
         </ButtonStyled>
+
     );
 };
 
-export default Button;
+
 
 const ButtonStyled = styled.button`
-    
-    
+background-color: red;
+
 `

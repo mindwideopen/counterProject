@@ -1,41 +1,30 @@
-import React, {useEffect, useState} from 'react';
 import {InputComponent} from "./InputComponent";
-import Button from "./Button";
+import {Button} from "./Button";
 import {Wrapper} from "./Wrapper";
 import {SectionWrapper} from "./SectionWrapper";
 import {UpperWrapperStyled} from "./UpperWrapper";
 
+type SettingComponentPropsType = {
+    setMaxValueFunction: (value: number) => void,
+    setStartValueFunction: (value: number) => void,
+    maxValue: number,
+    startValue: number,
+    setToLocalStorage: () => void,
 
-export const SettingComponent = () => {
-
-    const [maxValue, setMaxValue] = useState<number>(0);
-    const [startValue, setStartValue] = useState<number>(0);
-
-    useEffect(() => {
-        getLocalStorage()
-    }, [])
+}
+export const SettingComponent = (props:SettingComponentPropsType) => {
 
     const setMaxValueFunction = (value: number) => {
-        setMaxValue(value);
+        props.setMaxValueFunction(value);
     }
     const setStartValueFunction = (value: number) => {
-        setStartValue(value);
+        props.setStartValueFunction(value);
     }
 
     const setToLocalStorage = () => {
-        localStorage.setItem('maxValue', JSON.stringify(maxValue));
-        localStorage.setItem('startValue', JSON.stringify(startValue));
+        props.setToLocalStorage()
 
-    }
-    const getLocalStorage = () => {
-        let maxValueToString = localStorage.getItem('maxValue');
-        let startValueToString = localStorage.getItem('startValue');
-        if (maxValueToString) {
-            setMaxValue(JSON.parse(maxValueToString))
-        }
-        if (startValueToString) {
-            setStartValue(JSON.parse(startValueToString))
-        }
+
     }
 
 
@@ -43,12 +32,14 @@ export const SettingComponent = () => {
 
         <SectionWrapper>
             <UpperWrapperStyled>
-                <InputComponent fieldName={'maxValue'} callBack={setMaxValueFunction} value={maxValue}/>
-                <InputComponent fieldName={'startValue'} callBack={setStartValueFunction} value={startValue}/>
+                <InputComponent fieldName={'maxValue'} callBack={setMaxValueFunction} value={props.maxValue}/>
+                <InputComponent fieldName={'startValue'} callBack={setStartValueFunction} value={props.startValue}/>
             </UpperWrapperStyled>
             <Wrapper justify={'center'}>
                 <Button buttonFunction={'SET'}
-                        callback={setToLocalStorage}></Button>
+                        callback={setToLocalStorage}
+                >
+                </Button>
             </Wrapper>
         </SectionWrapper>
 

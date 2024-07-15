@@ -1,33 +1,36 @@
 import React from 'react';
-import styled from "styled-components";
 import {SpanComponent} from "./SpanComponent";
 import {Wrapper} from "./Wrapper";
-import Button from "./Button";
+import {Button} from "./Button";
 import {SectionWrapper} from "./SectionWrapper";
 import {UpperWrapperStyled} from "./UpperWrapper";
 
-export const DisplayComponent = () => {
-    // const increment = (value: number) => {
-    //     value = value + 1;
-    //     return value;
-    }
+type DisplayValuePropsType = {
+    displayValue: number,
+    increment: () => void,
+    reset: () => void
+}
 
-//
-//     return (
-//         <SectionWrapper>
-//
-//                 <UpperWrapperStyled>
-//                     <SpanComponent fieldName={'value'}/>
-//                 </UpperWrapperStyled>
-//                 <Wrapper justify={'space-around'}>
-//                     <Button buttonFunction={'INC'}></Button>
-//                     <Button buttonFunction={'RESET'}></Button>
-//                 </Wrapper>
-//
-//
-//         </SectionWrapper>
-//     );
-// };
+
+export const DisplayComponent = (props: DisplayValuePropsType) => {
+
+
+
+     return (
+         <SectionWrapper>
+
+                 <UpperWrapperStyled>
+                     <SpanComponent displayValue={props.displayValue}/>
+                 </UpperWrapperStyled>
+                 <Wrapper justify={'space-around'}>
+                     <Button buttonFunction={'INC'} callback={props.increment}></Button>
+                     <Button buttonFunction={'RESET'} callback={props.reset}></Button>
+                 </Wrapper>
+
+
+         </SectionWrapper>
+     );
+ };
 
 
 
