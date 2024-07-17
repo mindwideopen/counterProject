@@ -11,13 +11,13 @@ function App() {
     const [startValue, setStartValue] = useState<number>(0);
     const [displayValue, setDisplayValue] = useState<string>(JSON.stringify(startValue));
     const [setButtonMode, setSetButtonMode] = useState<boolean>(true)
-    const [incrementButtonMode, setIncrementButtonMode] = useState<boolean>(true)
-
+    const [incrementButtonMode, setIncrementButtonMode] = useState<boolean>(false)
 
 
     useEffect(() => {
         getLocalStorage()
     }, [])
+
 
     const setMaxValueFunction = (value: number) => {
 
@@ -53,24 +53,28 @@ function App() {
     }
 
     const increment = () => {
-
-
-        setDisplayValue(JSON.stringify(Number(displayValue) + 1) )
-
-
+        if ((Number(displayValue)+1) === maxValue) {
+            console.log('disable')
+            setIncrementButtonMode(true)
+            setDisplayValue(JSON.stringify(Number(displayValue) + 1))
+        } else
+            setDisplayValue(JSON.stringify(Number(displayValue) + 1))
     }
+
+
 
     const reset = () => {
-
         setDisplayValue('0')
+        setIncrementButtonMode(false)
 
 
     }
 
-  const inputChangeHandler = () => {
-      setDisplayValue('select appropriate maxValue and startValue')
-      setSetButtonMode(false)
-  }
+    const inputChangeHandler = () => {
+        setDisplayValue('select appropriate maxValue and startValue')
+        setSetButtonMode(false)
+        setIncrementButtonMode(true)
+    }
 
 
     return (
@@ -90,7 +94,7 @@ function App() {
                               reset={reset}
                               buttonMode={incrementButtonMode}
 
-                              />
+            />
 
         </div>
 
