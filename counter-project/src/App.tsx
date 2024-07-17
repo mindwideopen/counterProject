@@ -4,6 +4,7 @@ import {useEffect, useState} from "react";
 import {DisplayComponent} from "./components/DisplayComponent";
 
 
+
 function App() {
 
 
@@ -12,11 +13,25 @@ function App() {
     const [displayValue, setDisplayValue] = useState<string>(JSON.stringify(startValue));
     const [setButtonMode, setSetButtonMode] = useState<boolean>(true)
     const [incrementButtonMode, setIncrementButtonMode] = useState<boolean>(false)
-
+    console.log(displayValue)
 
     useEffect(() => {
         getLocalStorage()
     }, [])
+
+    useEffect(() => {
+        if (startValue<0) {
+            setSetButtonMode(true)
+            setDisplayValue('Incorrect value!!!')        }
+    }, [startValue]);
+    useEffect(() => {
+
+
+    }, [displayValue]);
+
+
+
+
 
 
     const setMaxValueFunction = (value: number) => {
@@ -26,9 +41,10 @@ function App() {
     }
 
     const setStartValueFunction = (value: number) => {
-        setStartValue(value);
-    }
 
+            setStartValue(value)
+    }
+    console.log('startValue ', startValue)
 
     const setButtonHandler = () => {
 
@@ -53,14 +69,12 @@ function App() {
     }
 
     const increment = () => {
-        if ((Number(displayValue)+1) === maxValue) {
-            console.log('disable')
+        if ((Number(displayValue) + 1) === maxValue) {
             setIncrementButtonMode(true)
             setDisplayValue(JSON.stringify(Number(displayValue) + 1))
         } else
             setDisplayValue(JSON.stringify(Number(displayValue) + 1))
     }
-
 
 
     const reset = () => {
@@ -71,30 +85,30 @@ function App() {
     }
 
     const inputChangeHandler = () => {
-        setDisplayValue('select appropriate maxValue and startValue')
-        setSetButtonMode(false)
-        setIncrementButtonMode(true)
+        if(startValue>=-1) {
+            setDisplayValue('select appropriate maxValue and startValue')
+            setSetButtonMode(false)
+            setIncrementButtonMode(true)
+        }
+
     }
 
 
     return (
         <div className={"App"}>
+
             <SettingComponent setMaxValueFunction={setMaxValueFunction}
                               setStartValueFunction={setStartValueFunction}
-                              maxValue={JSON.stringify(maxValue)}
-                              startValue={JSON.stringify(startValue)}
+                              maxValue={maxValue}
+                              startValue={startValue}
                               setToLocalStorage={setButtonHandler}
                               displayHint={inputChangeHandler}
-                              buttonMode={setButtonMode}
+                              buttonMode={setButtonMode}/>
 
-
-            />
             <DisplayComponent value={displayValue}
                               increment={increment}
                               reset={reset}
-                              buttonMode={incrementButtonMode}
-
-            />
+                              buttonMode={incrementButtonMode}/>
 
         </div>
 

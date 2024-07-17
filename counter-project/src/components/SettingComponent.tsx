@@ -8,8 +8,8 @@ import {UpperWrapperStyled} from "./UpperWrapper";
 type SettingComponentPropsType = {
     setMaxValueFunction: (value: number) => void,
     setStartValueFunction: (value: number) => void,
-    maxValue: string,
-    startValue: string,
+    maxValue: number,
+    startValue: number,
     setToLocalStorage: () => void,
     displayHint: () => void,
     buttonMode: boolean

@@ -8,7 +8,7 @@ import {SpanComponent} from "./SpanComponent";
 type InputComponentType = {
     fieldName: string,
     callBack: (value: number) => void,
-    value: string,
+    value: number,
     displayHint: () => void
 
 
