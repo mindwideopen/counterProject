@@ -6,9 +6,11 @@ import {SectionWrapper} from "./SectionWrapper";
 import {UpperWrapperStyled} from "./UpperWrapper";
 
 type DisplayValuePropsType = {
-    displayValue: number,
+    value: string,
     increment: () => void,
-    reset: () => void
+    reset: () => void,
+
+
 }
 
 
@@ -20,7 +22,8 @@ export const DisplayComponent = (props: DisplayValuePropsType) => {
          <SectionWrapper>
 
                  <UpperWrapperStyled>
-                     <SpanComponent displayValue={props.displayValue}/>
+                     <SpanComponent value={props.value}/>
+
                  </UpperWrapperStyled>
                  <Wrapper justify={'space-around'}>
                      <Button buttonFunction={'INC'} callback={props.increment}></Button>

@@ -7,9 +7,10 @@ import {UpperWrapperStyled} from "./UpperWrapper";
 type SettingComponentPropsType = {
     setMaxValueFunction: (value: number) => void,
     setStartValueFunction: (value: number) => void,
-    maxValue: number,
-    startValue: number,
+    maxValue: string,
+    startValue: string,
     setToLocalStorage: () => void,
+    displayHint: () => void
 
 }
 export const SettingComponent = (props:SettingComponentPropsType) => {
@@ -32,8 +33,8 @@ export const SettingComponent = (props:SettingComponentPropsType) => {
 
         <SectionWrapper>
             <UpperWrapperStyled>
-                <InputComponent fieldName={'maxValue'} callBack={setMaxValueFunction} value={props.maxValue}/>
-                <InputComponent fieldName={'startValue'} callBack={setStartValueFunction} value={props.startValue}/>
+                <InputComponent fieldName={'maxValue'} callBack={setMaxValueFunction} value={props.maxValue} displayHint={props.displayHint}/>
+                <InputComponent fieldName={'startValue'} callBack={setStartValueFunction} value={props.startValue} displayHint={props.displayHint}/>
             </UpperWrapperStyled>
             <Wrapper justify={'center'}>
                 <Button buttonFunction={'SET'}

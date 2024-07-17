@@ -2,15 +2,16 @@ import React from 'react';
 import styled from "styled-components";
 
 type SpanComponentProps = {
-    fieldName?: string;
-    displayValue?: number;
+   value: string
+
+
 }
 
 export const SpanComponent = (props: SpanComponentProps) => {
 
     return (
         <SpanStyled>
-            {props.fieldName? props.fieldName: props.displayValue}
+            {props.value}
         </SpanStyled>
     );
 };

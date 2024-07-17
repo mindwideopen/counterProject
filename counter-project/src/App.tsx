@@ -5,23 +5,23 @@ import {DisplayComponent} from "./components/DisplayComponent";
 
 
 function App() {
-    console.log('APP render')
+
 
     const [maxValue, setMaxValue] = useState<number>(0);
     const [startValue, setStartValue] = useState<number>(0);
-    const [displayValue, setDisplayValue] = useState<number>(0);
-    console.log('после до колбека '+ maxValue)
+    const [displayValue, setDisplayValue] = useState<string>('0');
+
 
     useEffect(() => {
         getLocalStorage()
     }, [])
 
     const setMaxValueFunction = (value: number) => {
-        console.log('в колбеке до сета '+maxValue)
+
         setMaxValue(value);
-        console.log('в колбеке после сета '+maxValue)
+
     }
-    console.log('после после '+ maxValue)
+
     const setStartValueFunction = (value: number) => {
         setStartValue(value);
     }
@@ -45,29 +45,41 @@ function App() {
     }
 
     const increment = () => {
-        setDisplayValue(displayValue + 1)
+        // debugger
+
+        setDisplayValue((Number(displayValue) + 1 ).toString())
     }
 
     const reset = () => {
         setMaxValue(0)
         setStartValue(0)
-        setDisplayValue(0)
+        setDisplayValue('0')
+
 
     }
+
+  const displayHint = () => {
+      setDisplayValue('hi')
+
+  }
 
 
     return (
         <div className={"App"}>
             <SettingComponent setMaxValueFunction={setMaxValueFunction}
                               setStartValueFunction={setStartValueFunction}
-                              maxValue={maxValue}
-                              startValue={startValue}
+                              maxValue={maxValue.toString()}
+                              startValue={startValue.toString()}
                               setToLocalStorage={setToLocalStorage}
+                              displayHint={displayHint}
 
             />
-            <DisplayComponent displayValue={displayValue}
+            <DisplayComponent value={displayValue}
                               increment={increment}
-                              reset={reset}/>
+                              reset={reset}
+
+                              />
+
         </div>
 
     );

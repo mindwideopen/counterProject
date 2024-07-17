@@ -8,7 +8,8 @@ import {SpanComponent} from "./SpanComponent";
 type InputComponentType = {
     fieldName: string,
     callBack: (value: number) => void,
-    value: number,
+    value: string,
+    displayHint: () => void
 
 
 }
@@ -17,12 +18,16 @@ export const InputComponent = (props: InputComponentType) => {
 
 const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
     props.callBack(parseInt(e.currentTarget.value, 10));
+    props.displayHint()
+
 }
+
+
 
     return (
         <div>
-            <SpanComponent fieldName={props.fieldName}/>
-            <InputStyled  value={props.value} type={'number'}  onChange={onChangeHandler}></InputStyled>
+            <SpanComponent value={props.fieldName}/>
+            <InputStyled  value={props.value} type={'number'}  onChange={onChangeHandler} ></InputStyled>
         </div>
     );
 };
