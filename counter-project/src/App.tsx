@@ -10,7 +10,8 @@ function App() {
     const [maxValue, setMaxValue] = useState<number>(0);
     const [startValue, setStartValue] = useState<number>(0);
     const [displayValue, setDisplayValue] = useState<string>(JSON.stringify(startValue));
-    const [buttonMode, setButtonMode] = useState<boolean>(true)
+    const [setButtonMode, setSetButtonMode] = useState<boolean>(true)
+    const [incrementButtonMode, setIncrementButtonMode] = useState<boolean>(true)
 
 
 
@@ -29,12 +30,13 @@ function App() {
     }
 
 
-    const setToLocalStorage = () => {
+    const setButtonHandler = () => {
 
         localStorage.setItem('startValue', JSON.stringify(startValue));
         localStorage.setItem('maxValue', JSON.stringify(maxValue));
         setDisplayValue(JSON.stringify(startValue))
-        setButtonMode(true)
+        setSetButtonMode(true)
+        setIncrementButtonMode(false)
 
     }
 
@@ -67,10 +69,7 @@ function App() {
 
   const inputChangeHandler = () => {
       setDisplayValue('select appropriate maxValue and startValue')
-      setButtonMode(false)
-
-
-
+      setSetButtonMode(false)
   }
 
 
@@ -78,17 +77,18 @@ function App() {
         <div className={"App"}>
             <SettingComponent setMaxValueFunction={setMaxValueFunction}
                               setStartValueFunction={setStartValueFunction}
-                              maxValue={maxValue.toString()}
-                              startValue={startValue.toString()}
-                              setToLocalStorage={setToLocalStorage}
+                              maxValue={JSON.stringify(maxValue)}
+                              startValue={JSON.stringify(startValue)}
+                              setToLocalStorage={setButtonHandler}
                               displayHint={inputChangeHandler}
-                              buttonMode={buttonMode}
+                              buttonMode={setButtonMode}
 
 
             />
             <DisplayComponent value={displayValue}
                               increment={increment}
                               reset={reset}
+                              buttonMode={incrementButtonMode}
 
                               />
 

@@ -16,7 +16,7 @@ type SettingComponentPropsType = {
 
 
 }
-export const SettingComponent = (props:SettingComponentPropsType) => {
+export const SettingComponent = (props: SettingComponentPropsType) => {
 
 
     const setMaxValueFunction = (value: number) => {
@@ -37,8 +37,14 @@ export const SettingComponent = (props:SettingComponentPropsType) => {
 
         <SectionWrapper>
             <UpperWrapperStyled>
-                <InputComponent fieldName={'maxValue'} callBack={setMaxValueFunction} value={props.maxValue} displayHint={props.displayHint}/>
-                <InputComponent fieldName={'startValue'} callBack={setStartValueFunction} value={props.startValue} displayHint={props.displayHint}/>
+                <InputComponent fieldName={'maxValue'}
+                                callBack={setMaxValueFunction}
+                                value={props.maxValue}
+                                displayHint={props.displayHint}/>
+                <InputComponent fieldName={'startValue'}
+                                callBack={setStartValueFunction}
+                                value={props.startValue}
+                                displayHint={props.displayHint}/>
             </UpperWrapperStyled>
             <Wrapper justify={'center'}>
                 <Button buttonFunction={'SET'}

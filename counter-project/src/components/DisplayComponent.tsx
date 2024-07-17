@@ -9,6 +9,7 @@ type DisplayValuePropsType = {
     value: string,
     increment: () => void,
     reset: () => void,
+    buttonMode: boolean
 
 
 }
@@ -26,7 +27,7 @@ export const DisplayComponent = (props: DisplayValuePropsType) => {
 
                  </UpperWrapperStyled>
                  <Wrapper justify={'space-around'}>
-                     <Button buttonFunction={'INC'} callback={props.increment}></Button>
+                     <Button buttonFunction={'INC'} callback={props.increment} buttonMode={props.buttonMode}></Button>
                      <Button buttonFunction={'RESET'} callback={props.reset}></Button>
                  </Wrapper>
 
