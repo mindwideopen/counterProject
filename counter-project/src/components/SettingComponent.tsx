@@ -4,16 +4,20 @@ import {Wrapper} from "./Wrapper";
 import {SectionWrapper} from "./SectionWrapper";
 import {UpperWrapperStyled} from "./UpperWrapper";
 
+
 type SettingComponentPropsType = {
     setMaxValueFunction: (value: number) => void,
     setStartValueFunction: (value: number) => void,
     maxValue: string,
     startValue: string,
     setToLocalStorage: () => void,
-    displayHint: () => void
+    displayHint: () => void,
+    buttonMode: boolean
+
 
 }
 export const SettingComponent = (props:SettingComponentPropsType) => {
+
 
     const setMaxValueFunction = (value: number) => {
         props.setMaxValueFunction(value);
@@ -39,6 +43,7 @@ export const SettingComponent = (props:SettingComponentPropsType) => {
             <Wrapper justify={'center'}>
                 <Button buttonFunction={'SET'}
                         callback={setToLocalStorage}
+                        buttonMode={props.buttonMode}
                 >
                 </Button>
             </Wrapper>

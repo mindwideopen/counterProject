@@ -9,7 +9,9 @@ function App() {
 
     const [maxValue, setMaxValue] = useState<number>(0);
     const [startValue, setStartValue] = useState<number>(0);
-    const [displayValue, setDisplayValue] = useState<string>('0');
+    const [displayValue, setDisplayValue] = useState<string>(JSON.stringify(startValue));
+    const [buttonMode, setButtonMode] = useState<boolean>(true)
+
 
 
     useEffect(() => {
@@ -31,8 +33,12 @@ function App() {
 
         localStorage.setItem('startValue', JSON.stringify(startValue));
         localStorage.setItem('maxValue', JSON.stringify(maxValue));
+        setDisplayValue(JSON.stringify(startValue))
+        setButtonMode(true)
 
     }
+
+
     const getLocalStorage = () => {
         let maxValueToString = localStorage.getItem('maxValue');
         let startValueToString = localStorage.getItem('startValue');
@@ -45,21 +51,25 @@ function App() {
     }
 
     const increment = () => {
-        // debugger
 
-        setDisplayValue((Number(displayValue) + 1 ).toString())
+
+        setDisplayValue(JSON.stringify(Number(displayValue) + 1) )
+
+
     }
 
     const reset = () => {
-        setMaxValue(0)
-        setStartValue(0)
+
         setDisplayValue('0')
 
 
     }
 
-  const displayHint = () => {
-      setDisplayValue('hi')
+  const inputChangeHandler = () => {
+      setDisplayValue('select appropriate maxValue and startValue')
+      setButtonMode(false)
+
+
 
   }
 
@@ -71,7 +81,9 @@ function App() {
                               maxValue={maxValue.toString()}
                               startValue={startValue.toString()}
                               setToLocalStorage={setToLocalStorage}
-                              displayHint={displayHint}
+                              displayHint={inputChangeHandler}
+                              buttonMode={buttonMode}
+
 
             />
             <DisplayComponent value={displayValue}
