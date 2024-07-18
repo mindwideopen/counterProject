@@ -1,4 +1,5 @@
 import React from 'react';
+import styled from "styled-components";
 
 
 
@@ -8,17 +9,22 @@ type SpanComponentProps = {
     maxValue?: number,
     displayWarning?: boolean
 
-
 }
 
-export const SpanComponent = (props: SpanComponentProps) => {
+
+
+export const SpanComponent = (props:SpanComponentProps) => {
 
     return (
-        <span className={props.displayWarning ? 'inputWarning' : undefined}>
+        <SpanStyled >
             {props.value}
-        </span>
+        </SpanStyled>
 
     );
 };
 
 
+const SpanStyled = styled.span<SpanComponentProps>`
+font-weight: 900;
+    color:rgba(102, 210, 241)
+`

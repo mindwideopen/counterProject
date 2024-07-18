@@ -80,6 +80,7 @@ function App() {
     const reset = () => {
         setDisplayValue('0')
         setIncrementButtonMode(false)
+        setDisplayWarning(false)
     }
 
     const inputChangeHandler = () => {
