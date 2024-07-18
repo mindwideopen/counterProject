@@ -4,7 +4,6 @@ import {useEffect, useState} from "react";
 import {DisplayComponent} from "./components/DisplayComponent";
 
 
-
 function App() {
 
 
@@ -22,15 +21,12 @@ function App() {
     useEffect(() => {
         if (startValue<0) {
             setSetButtonMode(true)
-            setDisplayValue('Incorrect value!!!')        }
-    }, [startValue]);
-    useEffect(() => {
-
-
-    }, [displayValue]);
-
-
-
+            setDisplayValue('Incorrect value!!!')
+        } else if (maxValue<1) {
+            setSetButtonMode(true)
+            setDisplayValue('Incorrect value!!!')
+        }
+    }, [startValue, maxValue]);
 
 
 
@@ -42,7 +38,7 @@ function App() {
 
     const setStartValueFunction = (value: number) => {
 
-            setStartValue(value)
+        setStartValue(value)
     }
     console.log('startValue ', startValue)
 
@@ -85,12 +81,11 @@ function App() {
     }
 
     const inputChangeHandler = () => {
-        if(startValue>=-1) {
+        if (startValue >= 0) {
             setDisplayValue('select appropriate maxValue and startValue')
             setSetButtonMode(false)
             setIncrementButtonMode(true)
         }
-
     }
 
 
@@ -108,7 +103,8 @@ function App() {
             <DisplayComponent value={displayValue}
                               increment={increment}
                               reset={reset}
-                              buttonMode={incrementButtonMode}/>
+                              buttonMode={incrementButtonMode}
+                              maxValue={maxValue}/>
 
         </div>
 

@@ -1,9 +1,11 @@
 import React from 'react';
 import styled from "styled-components";
 
+
 type SpanComponentProps = {
 
-   value: string
+    value: string,
+    maxValue?: number
 
 
 }
@@ -11,8 +13,9 @@ type SpanComponentProps = {
 export const SpanComponent = (props: SpanComponentProps) => {
 
     return (
-
-            <span>{props.value}</span>
+        <span className={props.value === 'Incorrect value!!!' || props.value === JSON.stringify(props.maxValue) ? 'warning' : undefined}>
+            {props.value}
+        </span>
 
     );
 };

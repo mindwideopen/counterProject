@@ -9,7 +9,8 @@ type DisplayValuePropsType = {
     value: string,
     increment: () => void,
     reset: () => void,
-    buttonMode: boolean
+    buttonMode: boolean,
+    maxValue: number
 
 
 }
@@ -23,7 +24,8 @@ export const DisplayComponent = (props: DisplayValuePropsType) => {
          <SectionWrapper>
 
                  <UpperWrapperStyled>
-                     <SpanComponent value={props.value}/>
+                     <SpanComponent value={props.value}
+                     maxValue={props.maxValue}/>
 
                  </UpperWrapperStyled>
                  <Wrapper justify={'space-around'}>
