@@ -1,11 +1,12 @@
 import React from 'react';
-import styled from "styled-components";
+
 
 
 type SpanComponentProps = {
 
     value: string,
-    maxValue?: number
+    maxValue?: number,
+    displayWarning?: boolean
 
 
 }
@@ -13,7 +14,7 @@ type SpanComponentProps = {
 export const SpanComponent = (props: SpanComponentProps) => {
 
     return (
-        <span className={props.value === 'Incorrect value!!!' || props.value === JSON.stringify(props.maxValue) ? 'warning' : undefined}>
+        <span className={props.displayWarning ? 'inputWarning' : undefined}>
             {props.value}
         </span>
 

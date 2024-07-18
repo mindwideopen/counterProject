@@ -12,7 +12,8 @@ type SettingComponentPropsType = {
     startValue: number,
     setToLocalStorage: () => void,
     displayHint: () => void,
-    buttonMode: boolean
+    buttonMode: boolean,
+    inputWarning: boolean
 
 
 }
@@ -40,17 +41,18 @@ export const SettingComponent = (props: SettingComponentPropsType) => {
                 <InputComponent fieldName={'maxValue'}
                                 callBack={setMaxValueFunction}
                                 value={props.maxValue}
-                                displayHint={props.displayHint}/>
+                                displayHint={props.displayHint}
+                                inputWarning={props.inputWarning}/>
                 <InputComponent fieldName={'startValue'}
                                 callBack={setStartValueFunction}
                                 value={props.startValue}
-                                displayHint={props.displayHint}/>
+                                displayHint={props.displayHint}
+                                inputWarning={props.inputWarning}/>
             </UpperWrapperStyled>
             <Wrapper justify={'center'}>
                 <Button buttonFunction={'SET'}
                         callback={setToLocalStorage}
-                        buttonMode={props.buttonMode}
-                >
+                        buttonMode={props.buttonMode}>
                 </Button>
             </Wrapper>
         </SectionWrapper>
