@@ -25,7 +25,13 @@ export const SpanComponent = (props:SpanComponentProps) => {
 
 
 const SpanStyled = styled.span<SpanComponentProps>`
-font-weight: 900;
-    color:rgba(102, 210, 241);
-    background-color: ${props => props.displayWarning ? 'red': ''};
+    text-align: center;
+    vertical-align: middle;
+    line-height: ${props => props.displayWarning ? '85px' : 'auto'};
+    font-weight: 900;
+    color: rgba(102, 210, 241);
+    background-color: ${props => props.displayWarning ? 'red' : ''};
+    width: ${props => props.displayWarning ? '100%' : 'auto'};
+    height: ${props => props.displayWarning ? '100%' : 'auto'};
+    position: ${props => props.displayWarning ? 'absolute' : 'static'};
 `

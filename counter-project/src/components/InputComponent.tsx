@@ -41,6 +41,8 @@ export const InputComponent = (props: InputComponentType) => {
 
 
 const InputStyled = styled.input<InputStyledPropsType>`
+    background: ${props => props.inputWarning? 'red':''};
+    
 `
 
 
