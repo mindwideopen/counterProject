@@ -26,13 +26,13 @@ export const DisplayComponent = (props: DisplayValuePropsType) => {
 
                  <UpperWrapperStyled>
                      <SpanComponent value={props.value}
-                                    maxValue={props.maxValue}
+
                                     displayWarning={props.displayWarning}/>
 
                  </UpperWrapperStyled>
                  <LowerWrapper justify={'space-around'}>
-                     <Button buttonFunction={'INC'} callback={props.increment} buttonMode={props.buttonMode}></Button>
-                     <Button buttonFunction={'RESET'} callback={props.reset}></Button>
+                     <Button buttonName={'INC'} callback={props.increment} buttonMode={props.buttonMode}></Button>
+                     <Button buttonName={'RESET'} callback={props.reset}></Button>
                  </LowerWrapper>
 
 

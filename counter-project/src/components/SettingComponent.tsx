@@ -50,7 +50,7 @@ export const SettingComponent = (props: SettingComponentPropsType) => {
                                 inputWarning={props.inputWarning}/>
             </UpperWrapperStyled>
             <LowerWrapper justify={'center'}>
-                <Button buttonFunction={'SET'}
+                <Button buttonName={'SET'}
                         callback={setToLocalStorage}
                         buttonMode={props.buttonMode}>
                 </Button>

@@ -6,7 +6,6 @@ import styled from "styled-components";
 type SpanComponentProps = {
 
     value: string,
-    maxValue?: number,
     displayWarning?: boolean
 
 }
@@ -14,9 +13,10 @@ type SpanComponentProps = {
 
 
 export const SpanComponent = (props:SpanComponentProps) => {
+    console.log('warning ' + props.displayWarning)
 
     return (
-        <SpanStyled >
+        <SpanStyled value={props.value} displayWarning={props.displayWarning} >
             {props.value}
         </SpanStyled>
 
@@ -26,5 +26,6 @@ export const SpanComponent = (props:SpanComponentProps) => {
 
 const SpanStyled = styled.span<SpanComponentProps>`
 font-weight: 900;
-    color:rgba(102, 210, 241)
+    color:rgba(102, 210, 241);
+    background-color: ${props => props.displayWarning ? 'red': ''};
 `

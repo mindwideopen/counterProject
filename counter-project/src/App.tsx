@@ -6,7 +6,6 @@ import {DisplayComponent} from "./components/DisplayComponent";
 
 function App() {
 
-
     const [maxValue, setMaxValue] = useState<number>(0);
     const [startValue, setStartValue] = useState<number>(0);
     const [displayValue, setDisplayValue] = useState<string>('0');
@@ -14,6 +13,10 @@ function App() {
     const [incrementButtonMode, setIncrementButtonMode] = useState<boolean>(false)
     const [inputWarning, setInputWarning] = useState<boolean>(false)
     const [displayWarning, setDisplayWarning] = useState<boolean>(false)
+
+
+
+
 
 
     useEffect(() => {
@@ -87,9 +90,7 @@ function App() {
 
 
     }
-    console.log('max_value = ' + maxValue)
-    console.log('start_value = ' + startValue)
-    console.log(displayValue)
+
 
 // для равных Max И start создать переменную для проверки равенства и в пропсах передать в инпут для стиля
 

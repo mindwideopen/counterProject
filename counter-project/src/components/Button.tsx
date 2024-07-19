@@ -3,21 +3,29 @@ import styled from "styled-components";
 
 
 type ButtonPropsType = {
-     children?: React.ReactNode;     //---------------------------??????????-------------------------------
-    buttonFunction: string,
+    children?: React.ReactNode;
+    buttonName: string,
     callback: () => void,
     buttonMode?: boolean,
+}
+
+type ButtonStyledPropsType = {
+    onClick?: () => void,
+    disabled?: boolean,
+    buttonName: string,
 
 }
 
 export const Button = (props: ButtonPropsType) => {
     const onClickHandler = () => {
-        props.callback();
+        if (props.callback) {
+            props.callback()
+        }
     }
     return (
 
-        <ButtonStyled onClick={onClickHandler} disabled={props.buttonMode}>
-            {props.buttonFunction}
+        <ButtonStyled onClick={onClickHandler} disabled={props.buttonMode} buttonName={props.buttonName}  >
+            {props.buttonName}
         </ButtonStyled>
 
     );
@@ -25,7 +33,7 @@ export const Button = (props: ButtonPropsType) => {
 
 
 
-const ButtonStyled = styled.button`
+const ButtonStyled = styled.button<ButtonStyledPropsType>`
     background-color: rgba(102, 210, 241);
     outline: none;
     border: none;
