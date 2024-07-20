@@ -55,6 +55,7 @@ export const SettingComponent = (props: SettingComponentPropsType) => {
                         callback={setToLocalStorage}
                         buttonMode={props.buttonMode}>
                 </Button>
+
             </Wrapper>
         </SectionWrapper>
 

@@ -11,7 +11,8 @@ type DisplayValuePropsType = {
     reset: () => void,
     buttonMode: boolean,
     maxValue: number,
-    displayWarning: boolean
+    displayWarning: boolean,
+    callBack: () => void
 
 
 }
@@ -33,6 +34,7 @@ export const DisplayComponent = (props: DisplayValuePropsType) => {
                      border>
                 <Button buttonName={'INC'} callback={props.increment} buttonMode={props.buttonMode}></Button>
                 <Button buttonName={'RESET'} callback={props.reset}></Button>
+                <Button buttonName={'SET'} callback={props.callBack}></Button>
             </Wrapper>
 
 

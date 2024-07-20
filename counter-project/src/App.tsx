@@ -13,6 +13,7 @@ function App() {
     const [incrementButtonMode, setIncrementButtonMode] = useState<boolean>(false)
     const [inputWarning, setInputWarning] = useState<boolean>(false)
     const [displayWarning, setDisplayWarning] = useState<boolean>(false)
+    const [counterMode, setCounterMode] = useState<boolean>(true)
 
 
 
@@ -24,7 +25,7 @@ function App() {
     }, [])
 
     useEffect(() => {
-        if (startValue < 0 || maxValue < 0 || startValue >= maxValue) {
+        if (startValue < 0 || maxValue < 0 || startValue >= maxValue) {           //перенести проверку в setValue
             setDisableSetButton(true)
             setDisplayValue('INCORRECT VALUE')
             setInputWarning(true)
@@ -57,6 +58,7 @@ function App() {
         setDisplayValue(JSON.stringify(startValue))
         setDisableSetButton(true)
         setIncrementButtonMode(false)
+        setCounterMode(!counterMode)
 
     }
 
@@ -92,11 +94,18 @@ function App() {
 
     }
 
+    const modeSetter = () => {
+        setCounterMode(!counterMode)
+    }
+    console.log('counterMode '+ counterMode)
 
-// для равных Max И start создать переменную для проверки равенства и в пропсах передать в инпут для стиля
+
+
 
     return (
         <div className={"App"}>
+            {counterMode ?
+
 
             <SettingComponent setMaxValueFunction={setMaxValueFunction}
                               setStartValueFunction={setStartValueFunction}
@@ -107,13 +116,15 @@ function App() {
                               buttonMode={disableSetButton}
                               inputWarning={inputWarning}/>
 
-
+:
             <DisplayComponent value={displayValue}
                               increment={increment}
                               reset={reset}
                               buttonMode={incrementButtonMode}
+                              callBack={modeSetter}
                               maxValue={maxValue}
                               displayWarning={displayWarning}/>
+            }
 
         </div>
 
