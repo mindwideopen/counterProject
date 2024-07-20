@@ -84,7 +84,7 @@ function App() {
     }
 
     const reset = () => {
-        setDisplayValue('0')
+        setDisplayValue(JSON.stringify(startValue))
         setIncrementButtonMode(false)
         setDisplayWarning(false)
     }
@@ -96,6 +96,7 @@ function App() {
 
     const modeSetter = () => {
         setCounterMode(!counterMode)
+        setDisableSetButton(false)
     }
     console.log('counterMode '+ counterMode)
 
