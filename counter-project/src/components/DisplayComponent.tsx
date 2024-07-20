@@ -1,6 +1,6 @@
 import React from 'react';
 import {SpanComponent} from "./SpanComponent";
-import {LowerWrapper} from "./Wrapper";
+import {Wrapper} from "./Wrapper";
 import {Button} from "./Button";
 import {SectionWrapper} from "./SectionWrapper";
 import {UpperWrapperStyled} from "./UpperWrapper";
@@ -20,25 +20,25 @@ type DisplayValuePropsType = {
 export const DisplayComponent = (props: DisplayValuePropsType) => {
 
 
+    return (
+        <SectionWrapper>
 
-     return (
-         <SectionWrapper>
+            <UpperWrapperStyled>
+                <SpanComponent value={props.value}
 
-                 <UpperWrapperStyled>
-                     <SpanComponent value={props.value}
+                               displayWarning={props.displayWarning}/>
 
-                                    displayWarning={props.displayWarning}/>
-
-                 </UpperWrapperStyled>
-                 <LowerWrapper justify={'space-around'}>
-                     <Button buttonName={'INC'} callback={props.increment} buttonMode={props.buttonMode}></Button>
-                     <Button buttonName={'RESET'} callback={props.reset}></Button>
-                 </LowerWrapper>
+            </UpperWrapperStyled>
+            <Wrapper justify={'space-around'}
+                     border>
+                <Button buttonName={'INC'} callback={props.increment} buttonMode={props.buttonMode}></Button>
+                <Button buttonName={'RESET'} callback={props.reset}></Button>
+            </Wrapper>
 
 
-         </SectionWrapper>
-     );
- };
+        </SectionWrapper>
+    );
+};
 
 
 

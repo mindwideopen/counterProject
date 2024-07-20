@@ -1,6 +1,6 @@
 import {InputComponent} from "./InputComponent";
 import {Button} from "./Button";
-import {LowerWrapper} from "./Wrapper";
+import {Wrapper} from "./Wrapper";
 import {SectionWrapper} from "./SectionWrapper";
 import {UpperWrapperStyled} from "./UpperWrapper";
 
@@ -49,12 +49,13 @@ export const SettingComponent = (props: SettingComponentPropsType) => {
                                 displayHint={props.displayHint}
                                 inputWarning={props.inputWarning}/>
             </UpperWrapperStyled>
-            <LowerWrapper justify={'center'}>
+            <Wrapper justify={'center'}
+            border>
                 <Button buttonName={'SET'}
                         callback={setToLocalStorage}
                         buttonMode={props.buttonMode}>
                 </Button>
-            </LowerWrapper>
+            </Wrapper>
         </SectionWrapper>
 
 

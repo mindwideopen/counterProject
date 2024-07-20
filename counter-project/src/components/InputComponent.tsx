@@ -1,6 +1,7 @@
 import React, {ChangeEvent} from 'react';
 import {SpanComponent} from "./SpanComponent";
 import styled from "styled-components";
+import {Wrapper} from "./Wrapper";
 
 
 type InputComponentType = {
@@ -29,20 +30,22 @@ export const InputComponent = (props: InputComponentType) => {
 
 
     return (
-        <div>
+        <Wrapper>
             <SpanComponent value={props.fieldName}/>
             <InputStyled inputWarning={props.inputWarning}
                          value={props.value}
                          type={'number'}
                          onChange={onChangeHandler}></InputStyled>
-        </div>
+        </Wrapper>
     );
 };
 
 
 const InputStyled = styled.input<InputStyledPropsType>`
     background: ${props => props.inputWarning? 'red':''};
-    
+    width: 136px;
+    margin-left: 10px;
+    text-align: center;
 `
 
 

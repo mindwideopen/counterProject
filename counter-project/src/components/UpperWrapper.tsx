@@ -11,5 +11,6 @@ export const UpperWrapperStyled = styled.div`
     border-radius: 5px;
     min-height: 70px;
     position: relative;
+    height: 100px;
 
 `

@@ -22,6 +22,7 @@ function App() {
     useEffect(() => {
         getLocalStorage()
     }, [])
+
     useEffect(() => {
         if (startValue < 0 || maxValue < 0 || startValue >= maxValue) {
             setDisableSetButton(true)

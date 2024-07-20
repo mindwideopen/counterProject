@@ -6,21 +6,22 @@ type WrapperProps = {
     justify?: string,
     align?: string,
     alignContent?: string,
-    width?: string
+    width?: string,
+    border?: boolean
 }
 
-export const LowerWrapper = styled.div<WrapperProps>`
+export const Wrapper = styled.div<WrapperProps>`
     display: flex;
     justify-content: ${props => props.justify};
     align-items: ${props => props.align};
     flex-direction: ${props => props.direction};
     align-content: ${props => props.alignContent};
     width: ${props => props.width};
-    border: 1px solid black;
     padding: 10px;
     margin-top: 10px;
-    border: 2px solid rgba(102, 210, 241);
+    border: ${props => props.border? '2px solid rgba(102, 210, 241)': ''};
     border-radius: 5px;
+    
     
    
 `
