@@ -2,11 +2,21 @@ import './App.css';
 import {SettingComponent} from "./components/SettingComponent";
 import {useEffect, useState} from "react";
 import {DisplayComponent} from "./components/DisplayComponent";
+import {useDispatch, useSelector} from "react-redux";
+import {setMaxValueAC} from "./components/redux/reducer";
+
+
+export type MaxValueType = {
+    maxValue: number;
+}
 
 
 function App() {
 
-    const [maxValue, setMaxValue] = useState<number>(0);
+    const dispatch = useDispatch();
+    const maxValue= useSelector((state:MaxValueType) => state.maxValue);
+    console.log(maxValue)
+    // const [maxValue, setMaxValue] = useState<number>(0);
     const [startValue, setStartValue] = useState<number>(0);
     const [displayValue, setDisplayValue] = useState<string>('0');
     const [disableSetButton, setDisableSetButton] = useState<boolean>(true)
@@ -43,7 +53,7 @@ function App() {
 
 
     const setMaxValueFunction = (value: number) => {
-        setMaxValue(value);
+        dispatch(setMaxValueAC(value));
     }
 
     const setStartValueFunction = (value: number) => {
@@ -66,7 +76,8 @@ function App() {
         let maxValueToString = localStorage.getItem('maxValue');
         let startValueToString = localStorage.getItem('startValue');
         if (maxValueToString) {
-            setMaxValue(JSON.parse(maxValueToString))
+            dispatch(setMaxValueAC(JSON.parse(maxValueToString)))
+
         }
         if (startValueToString) {
             setStartValue(JSON.parse(startValueToString))
