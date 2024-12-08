@@ -18,9 +18,9 @@ export const reducer = (state: MaxValueType = initialMaxValueState, action: Acti
 }
 
 
-type ActionTypes = setMaxValueAC
+type ActionTypes = setMaxValueACType
 
-type setMaxValueAC = ReturnType<typeof setMaxValueAC>
+type setMaxValueACType = ReturnType<typeof setMaxValueAC>
 
 export const setMaxValueAC = (value: number) => {
     return {
