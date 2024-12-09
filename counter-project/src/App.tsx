@@ -85,7 +85,12 @@ function App() {
 
 
 
-    const modeSetter = () => dispatch(setCounterMode(!counterMode));
+    const modeSetter = () =>{
+        dispatch(setCounterMode(!counterMode))
+        dispatch(setDisplayWarning(false))
+        dispatch(setDisableSetButton(false))
+
+    } ;
 
 
 
