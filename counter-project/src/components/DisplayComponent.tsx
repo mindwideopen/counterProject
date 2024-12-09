@@ -26,7 +26,6 @@ export const DisplayComponent = (props: DisplayValuePropsType) => {
 
             <UpperWrapperStyled>
                 <SpanComponent value={props.value}
-
                                displayWarning={props.displayWarning}/>
 
             </UpperWrapperStyled>

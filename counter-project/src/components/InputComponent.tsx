@@ -9,7 +9,7 @@ type InputComponentType = {
     fieldName: string,
     callBack: (value: number) => void,
     value: number,
-    displayHint: () => void,
+
     inputWarning: boolean
 
 }
@@ -25,7 +25,7 @@ export const InputComponent = (props: InputComponentType) => {
 
     const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
         props.callBack(parseInt(e.currentTarget.value, 10));
-        props.displayHint()
+
     }
 
 
