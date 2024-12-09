@@ -24,7 +24,7 @@ export const DisplayComponent = (props: DisplayValuePropsType) => {
     return (
         <SectionWrapper>
 
-            <UpperWrapperStyled>
+            <UpperWrapperStyled displayWarning={props.displayWarning} >
                 <SpanComponent value={props.value}
                                displayWarning={props.displayWarning}/>
 

@@ -37,7 +37,7 @@ export const SettingComponent = (props: SettingComponentPropsType) => {
     return (
 
         <SectionWrapper>
-            <UpperWrapperStyled>
+            <UpperWrapperStyled >
                 <InputComponent fieldName={'maxValue'}
                                 callBack={setMaxValueFunction}
                                 value={props.maxValue}
